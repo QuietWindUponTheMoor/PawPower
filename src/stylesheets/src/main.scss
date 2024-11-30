@@ -56,49 +56,88 @@ a {
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 1rem;
-    background-color: $darkbrown;
     border-radius: $br_lrg;
+    box-shadow: 0 0 15px 15px rgba(black, 0.2);
     .title, h1 {
         font-size: 180%;
+    }
+    .modal-close-trigger {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 30px;
+        color: $scrollbar_color;
+        font-weight: bold;
+        cursor: pointer;
     }
 }
 
 
 // Shop modal
 #shop-ui {
+    opacity: 0; // Default state
+    width: 60vw;
+    aspect-ratio: 1 / 1 !important;
+    height: 60vw;
+    padding-inline: 3rem;
+    background-image: url(../../../assets/backgrounds/shop.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-family: $f-secondary !important;
+    color: $scrollbar_color !important;
+    pointer-events: none;
+    .item-details {
+        opacity: 0; // Default state
+        flex-direction: column;
+        #item-worth, #valuable-cost, #upgrade-cost {
+            font-size: 120%;
+            font-weight: bold;
+            text-shadow: 
+                -1px -1px 0 $scrollbar_color, 
+                1px -1px 0 $scrollbar_color, 
+                -1px  1px 0 $scrollbar_color, 
+                1px  1px 0 $scrollbar_color;
+        }
+        #item-worth {
+            color: limegreen;
+        }
+        #valuable-cost {
+            color: $valuable;
+        }
+        #upgrade-cost {
+            color: $upgrade;
+        }
+    }
     #inventory {
         flex-direction: row;
+        justify-content: center;
         flex-wrap: wrap;
         gap: 0.5rem;
+        overflow-y: scroll;
         .shop-item {
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             width: 160px;
-            aspect-ratio: 1 / 1 !important;
-            height: 160px;
             gap: 3px;
             cursor: pointer;
             .shop-item-image {
                 width: 120px;
                 aspect-ratio: 1 / 1;
                 height: 120px;
-                //background-color: white;
+                z-index: 999;
             }
-            .item-name, .item-desc {
+            .item-name {
                 font-weight: bold;
             }
             .item-name {
+                color: $scrollbar_color !important;
                 font-size: 130%;
-            }
-            .item-desc {
-                font-size: 80%;
-                color: lime;
+                margin-top: -10px;
             }
             &:hover {
-                width: 161px;
-                aspect-ratio: 1 / 1 !important;
-                height: 161px;
+                opacity: 0.8;
             }
             &:active {
                 width: 159px;
@@ -107,6 +146,22 @@ a {
             }
         }
     }
+}
+
+// Clicky
+.clicky {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    aspect-ratio: 1 / 1 !important;
+    height: 50px;
+    background-image: url(../../../assets/icons/furball.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: pointer;
 }
 
 // TOP

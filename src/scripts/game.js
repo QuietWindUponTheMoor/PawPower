@@ -1,5 +1,7 @@
 // DOM Elements
 const $furballs = $("#furballs-count");
+const $shopPurchaseAudio = $("#shop-purchase")[0];
+$shopPurchaseAudio.volume = 0.5;
 
 // Upgrades owned
 let upgradesOwned = {
@@ -8,7 +10,7 @@ let upgradesOwned = {
 };
 
 // Valuables Owned
-let valueablesOwned = {
+let valuablesOwned = {
     furballs: 0,
 };
 
@@ -19,12 +21,17 @@ const worths = { // Per second
 };
 
 // Costs
-const costs = { // Evaluates to bool
-    get mainecoon() {
-        return evalCost(valueablesOwned.furballs, 120, null);
+const costs = {
+    // Costs [Number of base valuables the upgrade costs]
+    mainecoonCost: 120,
+    persianCost: 400,
+
+    // Eligibility
+    get mainecoon() { // Evaluates to bool
+        return evalCost(valuablesOwned.furballs, this.mainecoonCost, null);
     },
-    get persian() {
-        return evalCost(valueablesOwned.furballs, 400, upgradesOwned.mainecoons);
+    get persian() { // Evaluates to bool
+        return evalCost(valuablesOwned.furballs, this.persianCost, upgradesOwned.mainecoons);
     },
 };
 
@@ -35,31 +42,46 @@ function buyUpgrade(type) {
             if (costs.mainecoon === false) { // Unable to purchase
                 return false;
             }
+
+            // Increment upgrade, subtract valuable
             upgradesOwned.mainecoons++;
-            return true;
+            valuablesOwned.furballs -= costs.mainecoonCost;
+            $shopPurchaseAudio.play();
         case "persian":
             if (costs.persian === false) { // Unable to purchase
                 return false;
             }
+
+            // Increment upgrade, subtract valuable
             upgradesOwned.persians++;
-            return true;
+            valuablesOwned.furballs -= costs.persianCost;
+            $shopPurchaseAudio.play();
         default:
-            return false;
+            break;
     }
+
+    // Do upgrade display updates
+    updateUpgradeCosts();
+
+    // Return
+    return true;
 }
 
 // Main game loop
 async function mainLoop() {
     // Main loop functionality
+    if (valuablesOwned.furballs > 0) {
+        $furballs.text(precisionNumber(valuablesOwned.furballs));
+    }
     if (upgradesOwned.mainecoons > 0) {
         // Increment
-        valueablesOwned.furballs += (worths.mainecoon.worth * upgradesOwned.mainecoons) * effector;
-        $furballs.text(precisionNumber(valueablesOwned.furballs));
+        valuablesOwned.furballs += (worths.mainecoon.worth * upgradesOwned.mainecoons) * effector;
+        $furballs.text(precisionNumber(valuablesOwned.furballs));
     }
     if (upgradesOwned.persians > 0) {
         // Increment
-        valueablesOwned.furballs += (worths.persian.worth * upgradesOwned.persians) * effector;
-        $furballs.text(precisionNumber(valueablesOwned.furballs));
+        valuablesOwned.furballs += (worths.persian.worth * upgradesOwned.persians) * effector;
+        $furballs.text(precisionNumber(valuablesOwned.furballs));
     }
 }
 
@@ -76,7 +98,7 @@ function evalCost(valuablesOwned, valuablesRequired, upgradesOwned) {
      */
 
     // Calculate upgrades required
-    let upgradesRequired = upgradesOwned !== null ? valuablesOwned * 0.2 : 0; // Evaluates to 0 if upgradesOwned is null
+    let upgradesRequired = calcUpgradesRequired(upgradesOwned, valuablesOwned, 0.2) // Evaluates to 0 if upgradesOwned is null
 
     // Check conditions
     if (valuablesRequired > valuablesOwned) {
@@ -90,10 +112,26 @@ function evalCost(valuablesOwned, valuablesRequired, upgradesOwned) {
     // All conditions are met to purchase item
     return true;
 }
+function calcUpgradesRequired(upgradesOwned, valuablesOwned, multiplier) {
+    let upgradesRequired = upgradesOwned !== null ? valuablesOwned * multiplier : 0; // Evaluates to 0 if upgradesOwned is null
+
+    if (upgradesOwned !== null && upgradesRequired < 1) {
+        upgradesRequired = 1;
+    }
+
+    return upgradesRequired;
+}
 function precisionNumber(number) {
     if (number > 100) {
         return Math.floor(number);
     }
     
     return Number(number.toFixed(1));
+}
+function updateUpgradeCosts() {
+    // Elements
+    $persians = $("#up-cost-persian");
+
+    // Updates
+    $persians.text(`- ${calcUpgradesRequired(upgradesOwned.mainecoons, valuablesOwned.furballs, 0.2)} Maine Coons`);
 }

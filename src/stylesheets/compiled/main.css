@@ -10,9 +10,27 @@
 /*
  *  ## @Fonts ##
  */
+@font-face {
+  font-family: "Caveat";
+  src: url(../../../assets/fonts/Caveat/Caveat-VariableFont_wght.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
 /*
  *  ## @Borders ##
  */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+* ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 9px;
+}
+* ::-webkit-scrollbar-thumb {
+  background: #4E342E;
+  border-radius: 9px;
+}
+
 * {
   box-sizing: border-box;
   -webkit-user-select: none;
@@ -29,14 +47,14 @@ html, body {
   height: 100%;
   background-color: #282a30;
   color: #212733;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Brush Script MT", cursive;
   margin: 0;
   background-color: white;
 }
 
 p, a, div, span {
   font-size: 90%;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Brush Script MT", cursive;
   color: white;
   margin: 0;
   padding: 0;
@@ -78,25 +96,66 @@ a {
   top: 50%;
   transform: translate(-50%, -50%);
   padding: 1rem;
-  background-color: #380e02;
   border-radius: 8px;
+  box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.2);
 }
 .centered-modal .title, .centered-modal h1 {
   font-size: 180%;
 }
+.centered-modal .modal-close-trigger {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 30px;
+  color: #4E342E;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+#shop-ui {
+  opacity: 0;
+  width: 60vw;
+  aspect-ratio: 1/1 !important;
+  height: 60vw;
+  padding-inline: 3rem;
+  background-image: url(../../../assets/backgrounds/shop.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-family: "Caveat", "Brush Script MT", cursive !important;
+  color: #4E342E !important;
+  pointer-events: none;
+}
+#shop-ui .item-details {
+  opacity: 0;
+  flex-direction: column;
+}
+#shop-ui .item-details #item-worth, #shop-ui .item-details #valuable-cost, #shop-ui .item-details #upgrade-cost {
+  font-size: 120%;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #4E342E, 1px -1px 0 #4E342E, -1px 1px 0 #4E342E, 1px 1px 0 #4E342E;
+}
+#shop-ui .item-details #item-worth {
+  color: limegreen;
+}
+#shop-ui .item-details #valuable-cost {
+  color: rgb(206, 22, 206);
+}
+#shop-ui .item-details #upgrade-cost {
+  color: rgb(187, 107, 16);
+}
 #shop-ui #inventory {
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  overflow-y: scroll;
 }
 #shop-ui #inventory .shop-item {
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 160px;
-  aspect-ratio: 1/1 !important;
-  height: 160px;
   gap: 3px;
   cursor: pointer;
 }
@@ -104,26 +163,38 @@ a {
   width: 120px;
   aspect-ratio: 1/1;
   height: 120px;
+  z-index: 999;
 }
-#shop-ui #inventory .shop-item .item-name, #shop-ui #inventory .shop-item .item-desc {
+#shop-ui #inventory .shop-item .item-name {
   font-weight: bold;
 }
 #shop-ui #inventory .shop-item .item-name {
+  color: #4E342E !important;
   font-size: 130%;
-}
-#shop-ui #inventory .shop-item .item-desc {
-  font-size: 80%;
-  color: lime;
+  margin-top: -10px;
 }
 #shop-ui #inventory .shop-item:hover {
-  width: 161px;
-  aspect-ratio: 1/1 !important;
-  height: 161px;
+  opacity: 0.8;
 }
 #shop-ui #inventory .shop-item:active {
   width: 159px;
   aspect-ratio: 1/1 !important;
   height: 159px;
+}
+
+.clicky {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  aspect-ratio: 1/1 !important;
+  height: 50px;
+  background-image: url(../../../assets/icons/furball.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
 }
 
 #top {

@@ -37,6 +37,7 @@ $t1: #212733;
 $t2: darken($t1, 5%);
 // Negative
 $t-2: lighten($t1, 5%);
+$scrollbar_color: #4E342E;
 
 // Extras
 $safe: #0CAD1C;
@@ -46,6 +47,10 @@ $cancel: $s4;
 
 $darkbrown: #380e02;
 
+// Valuable & upgrade themes
+$valuable: rgb(206, 22, 206);
+$upgrade: rgb(187, 107, 16);
+
 // Border colors
 $p3-border: 1px solid lighten($p3, 30%);
 
@@ -53,7 +58,15 @@ $p3-border: 1px solid lighten($p3, 30%);
  *  ## @Fonts ##
  */
 
-$f-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$f-main: "Brush Script MT", cursive;
+@font-face {
+    font-family: "Caveat";
+    src: url(../../../assets/fonts/Caveat/Caveat-VariableFont_wght.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+$f-secondary: "Caveat", $f-main;
+//$f-secondary: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /*
  *  ## @Borders ##
@@ -66,3 +79,23 @@ $br_med: 6px;
 $br_sm: 4px;
 $br_xsm: 2px;
 $circle: 500px;
+
+// Scrollbar
+$scrollbar_track_color: rgba(#ffffff, 0);
+$scrollbar_thumb_color: $scrollbar_color;
+$scrollbar_size: 5px;
+$scrollbar_track_border_radius: 9px;
+* {
+    &::-webkit-scrollbar {
+        width: $scrollbar_size;
+    }
+    ::-webkit-scrollbar-track {
+        background: $scrollbar_track_color;
+        border-radius: $scrollbar_track_border_radius;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: $scrollbar_thumb_color;
+        border-radius: $scrollbar_track_border_radius;
+        
+    }
+}

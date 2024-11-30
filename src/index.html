@@ -10,23 +10,37 @@
     <script type="text/javascript" src="./scripts/game.js" defer></script>
 </head>
 <body>
-    <!-- Shop modal -->
+    <div class="hidden" id="sounds">
+        <audio id="book-open" src="../assets/sounds/book_open.wav"></audio>
+        <audio id="book-close" src="../assets/sounds/book_close.wav"></audio>
+        <audio id="book-close-2" src="../assets/sounds/book_close_2.wav"></audio>
+        <audio id="menu-item-hover" src="../assets/sounds/menu_screen_mouse_over.wav"></audio>
+        <audio id="shop-purchase" src="../assets/sounds/item_purchase.wav"></audio>
+    </div>
+    <!-- Shop UI -->
     <div class="centered-modal" id="shop-ui">
+        <p class="modal-close-trigger" id="shop-close-trigger">X</p>
         <h1 class="title">Shop for upgrades!</h1>
-        
+        <div class="item-details" id="shop-item-details">
+            <p id="item-worth">+ 2 furballs / s</p>
+            <p id="valuable-cost">- 400 furballs</p>
+            <p id="upgrade-cost">- 1 Maine Coons</p>
+        </div>
+
         <span id="inventory">
-            <div class="shop-item" onclick="buyUpgrade('mainecoon');">
+            <div class="shop-item" onclick="buyUpgrade('mainecoon');" id="mainecoon">
                 <div class="image-container shop-item-image"><img src="../assets/icons/mainecooncat.png"/></div>
                 <p class="item-name">Maine Coon Cat</p>
-                <p class="item-desc">1 furballs / s</p>
             </div>
-            <div class="shop-item" onclick="buyUpgrade('persian');">
+            <div class="shop-item" onclick="buyUpgrade('persian');" id="persian">
                 <div class="image-container shop-item-image"><img src="../assets/icons/persiancat.png"/></div>
                 <p class="item-name">Persian Cat</p>
-                <p class="item-desc">2 furballs / s</p>
             </div>
         </span>
     </div>
+
+    <!-- Clicky -->
+     <div class="clicky" id="clicky" onclick="valuablesOwned.furballs++; updateUpgradeCosts();"></div>
 
     <!-- Top -->
     <span id="top">
@@ -52,4 +66,5 @@
         <div class="image-container" id="shop-trigger"><img src="../assets/icons/shop/white48.png"/></div>
     </span>
 </body>
+<script type="text/javascript" src="./scripts/shop_controls.js"></script>
 </html>
