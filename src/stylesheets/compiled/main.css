@@ -1,0 +1,165 @@
+/*
+ *  ## @@Master variables file ##
+ *  This file is used primarily for colors, borders, anything for the theme of the application
+ */
+/*
+ *  ## @Colors ##
+ *  Neg = lighter
+ *  Pos = darker
+ */
+/*
+ *  ## @Fonts ##
+ */
+/*
+ *  ## @Borders ##
+ */
+* {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+*:not(input, style, script, noscript, title) {
+  display: flex;
+}
+
+html, body {
+  flex-direction: column;
+  height: 100%;
+  background-color: #282a30;
+  color: #212733;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  background-color: white;
+}
+
+p, a, div, span {
+  font-size: 90%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.row {
+  flex-direction: row !important;
+}
+
+.col {
+  flex-direction: column !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.centered-modal {
+  flex-direction: column;
+  position: absolute;
+  width: 75%;
+  max-width: 75%;
+  height: 90%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  background-color: #380e02;
+  border-radius: 8px;
+}
+.centered-modal .title, .centered-modal h1 {
+  font-size: 180%;
+}
+
+#shop-ui #inventory {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+#shop-ui #inventory .shop-item {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  aspect-ratio: 1/1 !important;
+  height: 160px;
+  gap: 3px;
+  cursor: pointer;
+}
+#shop-ui #inventory .shop-item .shop-item-image {
+  width: 120px;
+  aspect-ratio: 1/1;
+  height: 120px;
+}
+#shop-ui #inventory .shop-item .item-name, #shop-ui #inventory .shop-item .item-desc {
+  font-weight: bold;
+}
+#shop-ui #inventory .shop-item .item-name {
+  font-size: 130%;
+}
+#shop-ui #inventory .shop-item .item-desc {
+  font-size: 80%;
+  color: lime;
+}
+#shop-ui #inventory .shop-item:hover {
+  width: 161px;
+  aspect-ratio: 1/1 !important;
+  height: 161px;
+}
+#shop-ui #inventory .shop-item:active {
+  width: 159px;
+  aspect-ratio: 1/1 !important;
+  height: 159px;
+}
+
+#top {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: rgba(40, 42, 48, 0.8);
+}
+#top #shop-trigger {
+  width: 35px;
+  aspect-ratio: 1/1;
+  height: 35px;
+  cursor: pointer;
+}
+#top #shop-trigger:hover {
+  opacity: 0.8;
+}
+#top #collections {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+#top #collections .collection {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+#top #collections .collection .collection-pic {
+  width: 35px;
+  aspect-ratio: 1/1;
+  height: 35px;
+}
+#top #collections .collection .collection-count {
+  font-size: 120%;
+}/*# sourceMappingURL=main.css.map */

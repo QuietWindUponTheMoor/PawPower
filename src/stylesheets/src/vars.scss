@@ -1,0 +1,68 @@
+/*
+ *  ## @@Master variables file ##
+ *  This file is used primarily for colors, borders, anything for the theme of the application
+ */
+
+/*
+ *  ## @Colors ##
+ *  Neg = lighter
+ *  Pos = darker
+ */
+
+// Primary
+$p1: #282a30;
+// Positive
+$p2: darken($p1, 5%);
+$p3: darken($p2, 5%);
+$p4: darken($p3, 5%);
+// Negative
+$p-2: lighten($p1, 5%);
+$p-3: lighten($p-2, 5%);
+$p-4: lighten($p-3, 5%);
+
+// Secondary
+$s1: #c5c9d4;
+// Positive
+$s2: darken($s1, 5%);
+$s3: darken($s2, 5%);
+$s4: darken($s3, 5%);
+// Negative
+$s-2: lighten($s1, 5%);
+$s-3: lighten($s-2, 5%);
+$s-4: lighten($s-3, 5%);
+
+// Text
+$t1: #212733;
+// Positive
+$t2: darken($t1, 5%);
+// Negative
+$t-2: lighten($t1, 5%);
+
+// Extras
+$safe: #0CAD1C;
+$danger: #D5133F;
+$warn: gold;
+$cancel: $s4;
+
+$darkbrown: #380e02;
+
+// Border colors
+$p3-border: 1px solid lighten($p3, 30%);
+
+/*
+ *  ## @Fonts ##
+ */
+
+$f-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/*
+ *  ## @Borders ##
+ */
+
+// Radius
+$br_xlrg: 10px;
+$br_lrg: 8px;
+$br_med: 6px;
+$br_sm: 4px;
+$br_xsm: 2px;
+$circle: 500px;

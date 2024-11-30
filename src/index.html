@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPower - Main</title>
+    <link rel="stylesheet" href="./stylesheets/compiled/main.css">
+    <script type="text/javascript" src="./scripts/jquery.js"></script>
+    <script type="text/javascript" src="./scripts/main_loop.js" defer></script>
+    <script type="text/javascript" src="./scripts/game.js" defer></script>
+</head>
+<body>
+    <!-- Shop modal -->
+    <div class="centered-modal" id="shop-ui">
+        <h1 class="title">Shop for upgrades!</h1>
+        
+        <span id="inventory">
+            <div class="shop-item" onclick="buyUpgrade('mainecoon');">
+                <div class="image-container shop-item-image"><img src="../assets/icons/mainecooncat.png"/></div>
+                <p class="item-name">Maine Coon Cat</p>
+                <p class="item-desc">1 furballs / s</p>
+            </div>
+            <div class="shop-item" onclick="buyUpgrade('persian');">
+                <div class="image-container shop-item-image"><img src="../assets/icons/persiancat.png"/></div>
+                <p class="item-name">Persian Cat</p>
+                <p class="item-desc">2 furballs / s</p>
+            </div>
+        </span>
+    </div>
+
+    <!-- Top -->
+    <span id="top">
+        <span id="collections">
+            <div class="collection" id="furballs">
+                <div class="image-container collection-pic"><img src="../assets/icons/furball.png"/></div>
+                <p class="collection-count" id="furballs-count">0</p>
+            </div>
+            <div class="collection" id="paws">
+                <div class="image-container collection-pic"><img src=""/></div>
+                <p class="collection-count" id="paws-count">0</p>
+            </div>
+            <div class="collection" id="whiskers">
+                <div class="image-container collection-pic"><img src=""/></div>
+                <p class="collection-count" id="whiskers-count">0</p>
+            </div>
+            <div class="collection" id="anthro">
+                <div class="image-container collection-pic"><img src=""/></div>
+                <p class="collection-count" id="anthro-count">0</p>
+            </div>
+        </span>
+
+        <div class="image-container" id="shop-trigger"><img src="../assets/icons/shop/white48.png"/></div>
+    </span>
+</body>
+</html>

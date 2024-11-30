@@ -1,0 +1,149 @@
+@import "vars.scss";
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+*:not(input, style, script, noscript, title) {
+    display: flex;
+}
+
+
+
+html, body {
+    flex-direction: column;
+    height: 100%;
+    background-color: $p1;
+    color: $t1;
+    font-family: $f-main;
+    margin: 0;
+    background-color: white; // TEMPORARY!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+}
+p, a, div, span {
+    font-size: 90%;
+    font-family: $f-main;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+.row {
+    flex-direction: row !important;
+}
+.col {
+    flex-direction: column !important;
+}
+.hidden {
+    display: none !important;
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.image-container img {
+    width: 100%;
+    height: 100%;
+}
+.centered-modal {
+    flex-direction: column;
+    position: absolute;
+    width: 75%;
+    max-width: 75%;
+    height: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    background-color: $darkbrown;
+    border-radius: $br_lrg;
+    .title, h1 {
+        font-size: 180%;
+    }
+}
+
+
+// Shop modal
+#shop-ui {
+    #inventory {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        .shop-item {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 160px;
+            aspect-ratio: 1 / 1 !important;
+            height: 160px;
+            gap: 3px;
+            cursor: pointer;
+            .shop-item-image {
+                width: 120px;
+                aspect-ratio: 1 / 1;
+                height: 120px;
+                //background-color: white;
+            }
+            .item-name, .item-desc {
+                font-weight: bold;
+            }
+            .item-name {
+                font-size: 130%;
+            }
+            .item-desc {
+                font-size: 80%;
+                color: lime;
+            }
+            &:hover {
+                width: 161px;
+                aspect-ratio: 1 / 1 !important;
+                height: 161px;
+            }
+            &:active {
+                width: 159px;
+                aspect-ratio: 1 / 1 !important;
+                height: 159px;
+            }
+        }
+    }
+}
+
+// TOP
+#top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgba($p1, 0.8);
+    #shop-trigger {
+        width: 35px;
+        aspect-ratio: 1 / 1;
+        height: 35px;
+        cursor: pointer;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    #collections {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0.5rem;
+        gap: 1rem;
+        .collection {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            .collection-pic {
+                width: 35px;
+                aspect-ratio: 1 / 1;
+                height: 35px;
+            }
+            .collection-count {
+                font-size: 120%;
+            }
+        }
+    }
+}
